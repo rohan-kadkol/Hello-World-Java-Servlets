@@ -9,7 +9,9 @@ import java.io.PrintWriter;
 //@WebServlet(name = "HelloWorld", urlPatterns = {"/abc"})
 @WebServlet("/HelloWorldServlet")
 public class HelloWorld extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public HelloWorld() {}
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String location = request.getParameter("location");
@@ -28,7 +30,7 @@ public class HelloWorld extends HttpServlet {
         out.println("<a href=\"/\">Back to home</a>");
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("servlet_type", "HelloWorldServlet");
         request.setAttribute("form_action", "/HelloWorldServlet");
         request.getRequestDispatcher("request_page.jsp").forward(request, response);

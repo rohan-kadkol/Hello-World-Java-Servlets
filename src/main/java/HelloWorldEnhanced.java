@@ -7,7 +7,9 @@ import java.io.IOException;
 
 @WebServlet("/HelloWorldEnhanced")
 public class HelloWorldEnhanced extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public HelloWorldEnhanced() {}
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String location = request.getParameter("location");
@@ -23,7 +25,7 @@ public class HelloWorldEnhanced extends HttpServlet {
         request.getRequestDispatcher("/hello_world_enhanced.jsp").forward(request, response);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("servlet_type", "HelloWorldEnhanced");
         request.setAttribute("form_action", "/HelloWorldEnhanced");
         request.getRequestDispatcher("request_page.jsp").forward(request, response);
