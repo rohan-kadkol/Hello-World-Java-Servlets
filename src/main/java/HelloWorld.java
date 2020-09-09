@@ -31,8 +31,24 @@ public class HelloWorld extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("servlet_type", "HelloWorldServlet");
-        request.setAttribute("form_action", "/HelloWorldServlet");
-        request.getRequestDispatcher("request_page.jsp").forward(request, response);
+        String name = "NAME";
+        String email = "EMAIL";
+        String location = "LOCATION";
+        String gender = "GENDER";
+        String experience = "EXPERIENCE";
+
+        response.setContentType("text/html");
+        final PrintWriter out = response.getWriter();
+        out.println("Welcome back: " + name + "<br>");
+        out.println("Your name: " + name + "<br>");
+        out.println("Your email: " + email + "<br>");
+        out.println("Your location: " + location + "<br>");
+        out.println("Your gender: " + gender + "<br>");
+        out.println("Your experience: " + experience + "<br>");
+        out.println("<br><br>");
+        out.println("<a href=\"/\">Back to home</a>");
+//        request.setAttribute("servlet_type", "HelloWorldServlet");
+//        request.setAttribute("form_action", "/HelloWorldServlet");
+//        request.getRequestDispatcher("request_page.jsp").forward(request, response);
     }
 }
