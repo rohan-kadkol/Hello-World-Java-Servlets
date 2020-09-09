@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="HelloWorldServlet.war">
+    <root id="archive" name="ROOT.war">
       <element id="artifact" artifact-name="CSC4610HelloWorldServlet:war exploded" />
     </root>
   </artifact>
