@@ -4,11 +4,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-//@WebServlet(name = "HelloWorld", urlPatterns = {"/abc"})
-@WebServlet("/HelloWorldServlet")
-public class HelloWorld extends HttpServlet {
+@WebServlet("/HelloWorldEnhanced")
+public class HelloWorldEnhanced extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
@@ -16,21 +14,18 @@ public class HelloWorld extends HttpServlet {
         String gender = request.getParameter("gender");
         String experience = request.getParameter("experience");
 
-        response.setContentType("text/html");
-        final PrintWriter out = response.getWriter();
-        out.println("Welcome back: " + name + "<br>");
-        out.println("Your name: " + name + "<br>");
-        out.println("Your email: " + email + "<br>");
-        out.println("Your location: " + location + "<br>");
-        out.println("Your gender: " + gender + "<br>");
-        out.println("Your experience: " + experience + "<br>");
-        out.println("<br><br>");
-        out.println("<a href=\"/\">Back to home</a>");
+        request.setAttribute("name", name);
+        request.setAttribute("email", email);
+        request.setAttribute("location", location);
+        request.setAttribute("gender", gender);
+        request.setAttribute("experience", experience);
+
+        request.getRequestDispatcher("/hello_world_enhanced.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("servlet_type", "HelloWorldServlet");
-        request.setAttribute("form_action", "/HelloWorldServlet");
+        request.setAttribute("servlet_type", "HelloWorldEnhanced");
+        request.setAttribute("form_action", "/HelloWorldEnhanced");
         request.getRequestDispatcher("request_page.jsp").forward(request, response);
     }
 }
